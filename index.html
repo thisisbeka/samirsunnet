@@ -37,6 +37,18 @@
             height: 400px;
         }
 
+        .route-button {
+            margin: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            color: white;
+            background-color: blue;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
         @media (max-width: 600px) {
             .background {
                 height: 50vh; /* Устанавливаем меньшую высоту для мобильных устройств */
@@ -51,7 +63,7 @@
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBDjWR6xaV4AYXcESJYux1Yb5SPsvfgMMo" async defer></script>
     <script type="text/javascript">
         function initMap() {
-            var location = { lat: 43.372711, lng: 77.599502 }; // Координаты кафе
+            var location = { lat: 43.372711, lng: 77.599502 }; // Пример координат
             var map = new google.maps.Map(document.getElementById('map'), {
                 center: location,
                 zoom: 10
@@ -70,8 +82,11 @@
 <body>
     <div class="background"></div>
     <div class="content">
-        <div class="address-text">Адрес Кафе Руслан:</div>
+        <div class="address-text">Адрес Кафе:</div>
         <div id="map"></div>
+        <a href="https://www.google.com/maps/dir/?api=1&destination=43.372711,77.599502" target="_blank" class="route-button">
+            Построить маршрут
+        </a>
     </div>
 </body>
 </html>
