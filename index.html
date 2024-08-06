@@ -48,23 +48,26 @@
             }
         }
     </style>
-    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY" async defer></script>
     <script type="text/javascript">
-        function init() {
-            var myMap = new ymaps.Map("map", {
-                center: [43.237163, 76.945654], 
+        function initMap() {
+            var location = { lat: 43.372711, lng: 77.599502 }; // Координаты кафе
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: location,
                 zoom: 10
             });
 
-            var myPlacemark = new ymaps.Placemark([43.372711, 77.599502], {
-                balloonContent: 'Место Торжества: Руслан Кафе'
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map,
+                title: 'Место Торжества: Руслан Кафе'
             });
-
-            myMap.geoObjects.add(myPlacemark);
         }
+
+        window.onload = initMap;
     </script>
 </head>
-<body onload="init();">
+<body>
     <div class="background"></div>
     <div class="content">
         <div class="address-text">Адрес Кафе:</div>
