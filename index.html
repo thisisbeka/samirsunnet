@@ -4,69 +4,60 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Одностраничник с Яндекс.Картой</title>
-    <link href="https://fonts.googleapis.com/css2?family=Alegreya&display=swap" rel="stylesheet">
     <style>
         body, html {
-            height: 100%;
             margin: 0;
+            padding: 0;
+            height: 100%;
             font-family: Arial, sans-serif;
         }
 
         .background {
-            background-image: url('samo.jpg');
-            height: 60%;
+            background-image: url('samo_bg.jpg'); /* Замените на ваш URL */
+            height: 100vh;
             background-position: center;
             background-repeat: no-repeat;
-            background-size: cover;
-            position: relative;
+            background-size: cover; /* Заполняет весь контейнер, сохраняя пропорции */
         }
 
         .content {
-            position: absolute;
-            top: 0%;
-            left: 0%;
-            text-align: right;
-            color: white;
-            font-size: 1.2em;
-            line-height: 1.5;
-            padding: 20px;
-        }
-
-        .custom-font {
-            font-family: 'Alegreya', serif;
-        }
-
-        .invitation-background {
-            background-image: url('bg_final.jpg'); /* Замените на ваш URL */
-            background-size: cover;
-            background-position: center;
-            padding: 270px;
-            color: black;
             text-align: center;
+            padding: 20px;
+            background-color: white;
         }
 
         .address-text {
-            text-align: center;
-            font-size: 18px;
+            font-size: 24px;
+            color: black;
             margin: 20px 0;
         }
 
         #map {
             width: 100%;
             height: 400px;
-            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .background {
+                height: 50vh; /* Устанавливаем меньшую высоту для мобильных устройств */
+                background-size: contain; /* Сохраняет пропорции изображения */
+            }
+
+            .address-text {
+                font-size: 20px;
+            }
         }
     </style>
     <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU" type="text/javascript"></script>
     <script type="text/javascript">
         function init() {
             var myMap = new ymaps.Map("map", {
-                center: [55.751574, 37.573856], // Координаты центра карты (Москва)
+                center: [43.372711, 77.599502], // Координаты центра карты (Москва)
                 zoom: 10
             });
 
-            var myPlacemark = new ymaps.Placemark([55.751574, 37.573856], {
-                balloonContent: 'Ваш адрес приглашения'
+            var myPlacemark = new ymaps.Placemark([43.372711, 77.599502], {
+                balloonContent: 'Место Торжества: Руслан Кафе'
             });
 
             myMap.geoObjects.add(myPlacemark);
@@ -74,17 +65,10 @@
     </script>
 </head>
 <body onload="init();">
-    <div class="background">
-        <div class="content">
-            <h1>Сүндет той</h1>
-        </div>
+    <div class="background"></div>
+    <div class="content">
+        <div class="address-text">Адрес Кафе:</div>
+        <div id="map"></div>
     </div>
-    <div class="invitation-background">
-        
-    </div>
-    <div class="address-text">
-        Адрес Кафе:
-    </div>
-    <div id="map"></div>
 </body>
 </html>
